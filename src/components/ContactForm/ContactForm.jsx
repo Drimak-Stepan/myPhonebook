@@ -1,6 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contacts/contactsSlice';
+// import { addContact } from 'redux/contacts/contactsSlice';
+import {
+  fetchAllContacts,
+  fetchAddBook,
+} from '../../redux/contacts/contactsOperations';
 
 import { Form, Label, Input, Btn } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
@@ -10,13 +14,17 @@ const ContactForm = () => {
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchAllContacts());
+  }, [dispatch]);
+
   const handelChangeNumber = e => {
     setNumber(e.target.value);
   };
 
   const handelSubmit = e => {
     e.preventDefault();
-    dispatch(addContact({ name, number }));
+    dispatch(fetchAddBook({ name, number }));
     setName('');
     setNumber('');
   };
