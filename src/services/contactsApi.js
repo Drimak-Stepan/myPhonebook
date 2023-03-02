@@ -6,17 +6,15 @@ const contactsInstance = axios.create({
 
 export const getAllContacts = async () => {
   const { data } = await contactsInstance.get('/');
-
   return data;
 };
 
-export const addContact = async data => {
+export const plusContact = async data => {
   const { data: result } = await contactsInstance.post('/', data);
-  console.log(result);
   return result;
 };
 
-export const deleteContact = async id => {
+export const removeContact = async id => {
   const { data } = await contactsInstance.delete(`/${id}`);
   return data;
 };
