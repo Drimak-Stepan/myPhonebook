@@ -6,7 +6,9 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 480px;
-  background-color: rgb(145, 247, 247);
+  border: 2px solid #e8e3e3;
+  border-radius: 8px;
+  background-color: #d5e2e5;
 `;
 
 export const Title = styled.h1`
