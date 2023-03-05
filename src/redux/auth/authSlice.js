@@ -13,64 +13,65 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: {
-    [signup.pending]: store => {
-      store.isRefreshing = true;
-      store.error = null;
-    },
-    [signup.fulfilled]: (store, { payload }) => {
-      store.isRefreshing = false;
-      store.user = payload.user;
-      store.token = payload.token;
-      store.isLogin = true;
-    },
-    [signup.rejected]: (store, { payload }) => {
-      store.isRefreshing = false;
-      store.error = payload;
-    },
-    [login.pending]: store => {
-      store.isRefreshing = true;
-      store.error = null;
-    },
-    [login.fulfilled]: (store, { payload }) => {
-      store.isRefreshing = false;
-      store.user = payload.user;
-      store.token = payload.token;
-      store.isLogin = true;
-    },
-    [login.rejected]: (store, { payload }) => {
-      store.isRefreshing = false;
-      store.error = payload;
-    },
-    [logout.pending]: store => {
-      store.isRefreshing = true;
-      store.error = null;
-    },
-    [logout.fulfilled]: store => {
-      store.isRefreshing = false;
-      store.user = {};
-      store.token = null;
-      store.isLogin = false;
-    },
-    [logout.rejected]: (store, { payload }) => {
-      store.isRefreshing = false;
-      store.error = payload;
-    },
-    [current.pending]: store => {
-      store.isRefreshing = true;
-      store.error = null;
-    },
-    [current.fulfilled]: (store, { payload }) => {
-      store.isRefreshing = false;
-      store.user = payload.user;
-      store.token = payload.token;
-      store.isLogin = true;
-    },
-    [current.rejected]: (store, { payload }) => {
-      store.isRefreshing = false;
-      store.token = null;
-      store.error = payload;
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(signup.pending, store => {
+        store.isRefreshing = true;
+        store.error = null;
+      })
+      .addCase(signup.fulfilled, (store, { payload }) => {
+        store.isRefreshing = false;
+        store.user = payload.user;
+        store.token = payload.token;
+        store.isLogin = true;
+      })
+      .addCase(signup.rejected, (store, { payload }) => {
+        store.isRefreshing = false;
+        store.error = payload;
+      })
+      .addCase(login.pending, store => {
+        store.isRefreshing = true;
+        store.error = null;
+      })
+      .addCase(login.fulfilled, (store, { payload }) => {
+        store.isRefreshing = false;
+        store.user = payload.user;
+        store.token = payload.token;
+        store.isLogin = true;
+      })
+      .addCase(login.rejected, (store, { payload }) => {
+        store.isRefreshing = false;
+        store.error = payload;
+      })
+      .addCase(logout.pending, store => {
+        store.isRefreshing = true;
+        store.error = null;
+      })
+      .addCase(logout.fulfilled, store => {
+        store.isRefreshing = false;
+        store.user = {};
+        store.token = null;
+        store.isLogin = false;
+      })
+      .addCase(logout.rejected, (store, { payload }) => {
+        store.isRefreshing = false;
+        store.error = payload;
+      })
+      .addCase(current.pending, store => {
+        store.isRefreshing = true;
+        store.error = null;
+      })
+      .addCase(current.fulfilled, (store, { payload }) => {
+        store.isRefreshing = false;
+        store.user = payload.user;
+        store.token = payload.token;
+        store.isLogin = true;
+      })
+      .addCase(current.rejected, (store, { payload }) => {
+        store.isRefreshing = false;
+        store.token = null;
+        store.error = payload;
+      });
   },
 });
 

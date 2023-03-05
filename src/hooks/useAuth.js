@@ -5,7 +5,7 @@ import {
   getAuthError,
   getUser,
   selectIsRefreshing,
-} from '../redux/auth/authSelectors';
+} from 'redux/auth/authSelectors';
 
 const useAuth = () => {
   const user = useSelector(getUser);
