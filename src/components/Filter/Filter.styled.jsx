@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Block = styled.form`
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 24px;
   border: 4px solid #9cb0b3;
 `;
 

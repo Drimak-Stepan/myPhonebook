@@ -2,15 +2,16 @@ import styled from '@emotion/styled';
 
 export const Stats = styled.ul`
   list-style: none;
-  padding: 10px 0;
-  margin: 10px 0;
-  border-radius: 8px;
+  padding: 10px 0 0 0;
+  margin: 16px 0 10px;
+  border-radius: 24px;
   border: 4px solid #9cb0b3;
 `;
 
 export const StatsLi = styled.li`
   position: relative;
-  padding: 14px;
+  padding: 10px;
+  margin-bottom: 10px;
 `;
 
 export const Item = styled.span`
