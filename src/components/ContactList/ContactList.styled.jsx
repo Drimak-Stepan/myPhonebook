@@ -27,7 +27,7 @@ export const Item = styled.span`
 export const Btn = styled.button`
   position: absolute;
   display: block;
-  width: 85px;
+  width: 45px;
   height: 40px;
   bottom: 0;
   right: 10px;
