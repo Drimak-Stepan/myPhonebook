@@ -1,5 +1,3 @@
-export const getContacts = ({ contacts }) => contacts.contacts;
-
 export const getFilteredContacts = ({ contacts, filter }) => {
   if (!filter) {
     return contacts.contacts;
@@ -14,3 +12,4 @@ export const getFilteredContacts = ({ contacts, filter }) => {
 };
 
 export const isLoading = ({ contacts }) => contacts.isLoading;
+export const isLoadingAdd = ({ contacts }) => contacts.isLoadingAdd;

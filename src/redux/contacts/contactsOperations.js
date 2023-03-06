@@ -26,19 +26,6 @@ export const addContact = createAsyncThunk(
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(response.data.message);
     }
-  },
-  {
-    condition: ({ name }, { getState }) => {
-      const { contacts } = getState();
-      const normalizedName = name.toLowerCase();
-      const result = contacts.contacts.find(({ name }) => {
-        return name.toLowerCase() === normalizedName;
-      });
-      if (result) {
-        alert(`Name: ${name} is already exist`);
-        return false;
-      }
-    },
   }
 );
 

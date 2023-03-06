@@ -13,9 +13,9 @@ const useAuth = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const isError = useSelector(getAuthError);
   return {
-    isLoggedIn,
-    isRefreshing,
-    user,
+    isLoggedIn, //appbar,navig,
+    isRefreshing, //app
+    user, //usermenu
     isError,
   };
 };

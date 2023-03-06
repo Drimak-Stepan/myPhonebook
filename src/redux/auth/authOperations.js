@@ -35,6 +35,7 @@ export const login = createAsyncThunk(
   }
 );
 
+///usemenu
 export const logout = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
@@ -52,6 +53,7 @@ export const logout = createAsyncThunk(
   }
 );
 
+///app
 export const current = createAsyncThunk(
   'auth/current',
   async (_, { rejectWithValue, getState }) => {

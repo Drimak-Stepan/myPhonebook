@@ -15,22 +15,26 @@ export const StatsLi = styled.li`
 `;
 
 export const Item = styled.span`
-  font-size: 20px;
+  position: relative;
+  font-size: 18px;
   font-weight: 700;
-  padding: 8px;
+  padding: 8px 8px 8px 32px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 24px;
   border: 1px solid #9cb0b3;
 `;
 
 export const Btn = styled.button`
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  display: block;
+  width: 85px;
+  height: 40px;
+  bottom: 0;
+  right: 10px;
   font-weight: 700;
   font-size: 20px;
   padding: 8px;
-  border-radius: 5px;
+  border-radius: 24px;
   border: 1px solid #9cb0b3;
   cursor: pointer;
   color: black;
@@ -39,7 +43,7 @@ export const Btn = styled.button`
     background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover {
-    background-color: #9cb0b3;
+    background-color: #1976d2;
     color: white;
   }
 `;

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const Block = styled.form`
+  display: flex;
+  justify-content: center;
   padding: 10px;
   border-radius: 24px;
   border: 4px solid #9cb0b3;
@@ -16,8 +18,7 @@ export const Input = styled.input`
   font-size: 20px;
   padding: 8px;
   margin-top: 5px;
-  margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #9cb0b3;
-  outline-color: #9cb0b3;
+  outline-color: #1976d2;
 `;

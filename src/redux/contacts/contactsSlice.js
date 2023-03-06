@@ -5,6 +5,7 @@ import { fetchContacts, addContact, deleteContact } from './contactsOperations';
 const initialState = {
   contacts: [],
   isLoading: false,
+  isLoadingAdd: false,
   error: null,
 };
 
@@ -25,14 +26,17 @@ const contactsSlice = createSlice({
         store.error = payload;
       })
       .addCase(addContact.pending, store => {
-        store.isLoading = true;
+        // store.isLoading = true;
+        store.isLoadingAdd = true;
       })
       .addCase(addContact.fulfilled, (store, { payload }) => {
-        store.isLoading = false;
+        // store.isLoading = false;
+        store.isLoadingAdd = false;
         store.contacts.push(payload);
       })
       .addCase(addContact.rejected, (store, { payload }) => {
-        store.isLoading = false;
+        // store.isLoading = false;
+        store.isLoadingAdd = false;
         store.error = payload;
       })
       .addCase(deleteContact.pending, store => {
