@@ -25,6 +25,7 @@ const authSlice = createSlice({
       })
       .addCase(signup.rejected, (store, { payload }) => {
         store.error = payload;
+        store.isLogin = false;
       })
       .addCase(login.pending, store => {
         store.error = null;

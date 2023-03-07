@@ -1,9 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/contactsOperations';
-import {
-  getFilteredContacts,
-  isLoading,
-} from 'redux/contacts/contactsSelectors';
+import { getFilteredContacts, events } from 'redux/contacts/contactsSelectors';
 
 import { Stats, StatsLi, Item, Btn } from './ContactList.styled';
 import { FiUser, FiPhone, FiTrash2 } from 'react-icons/fi';
@@ -13,7 +10,7 @@ import toast from 'react-hot-toast';
 const ContactList = () => {
   const list = useSelector(getFilteredContacts);
 
-  const isRemoved = useSelector(isLoading);
+  const idBtn = useSelector(events);
   const dispatch = useDispatch();
   const onDeleteContact = id =>
     dispatch(
@@ -48,7 +45,7 @@ const ContactList = () => {
             {number}
           </Item>
           <Btn type="button" onClick={() => onDeleteContact(id)}>
-            {!isRemoved ? <FiTrash2 /> : <DeleteLoader />}
+            {idBtn === id ? <DeleteLoader /> : <FiTrash2 />}
           </Btn>
         </StatsLi>
       ))}

@@ -12,4 +12,4 @@ export const getFilteredContacts = ({ contacts, filter }) => {
 };
 
 export const isLoading = ({ contacts }) => contacts.isLoading;
-export const isLoadingAdd = ({ contacts }) => contacts.isLoadingAdd;
+export const events = ({ contacts }) => contacts.events;

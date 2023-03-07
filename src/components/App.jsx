@@ -1,6 +1,6 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Layout } from './Layout';
 import { PrivateRoute } from '../components/PrivateRoute';
 import { PublicRoute } from './PublicRouter';
@@ -35,7 +35,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element=<Navigate to="/" /> />
         <Route
           path="/register"
           element={
