@@ -2,9 +2,36 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { signup } from '../../redux/auth/authOperations';
 import useAuth from '../../hooks/useAuth';
-import { Form, Label, Input, Btn } from './RegisterForm.styled';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import toast from 'react-hot-toast';
+
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center">
+      {'Copyright © '}
+      <Link
+        color="inherit"
+        href="https://drimak-stepan.github.io/goit-react-hw-08-phonebook/"
+      >
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+const theme = createTheme();
 
 export const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -40,38 +67,89 @@ export const RegisterForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} autoComplete="off">
-      <div>
-        <Label htmlFor="nameId">Username</Label>
-        <div>
-          <Input type="text" name="name" id="nameId" required={true} />
-        </div>
-        <Label htmlFor="emailId">Email</Label>
-        <div>
-          <Input type="email" name="email" id="emailId" required={true} />
-        </div>
-        <Label htmlFor="pasId">Password</Label>
-        <div style={{ position: 'relative' }}>
-          <Input
-            type={!showPassword ? 'password' : 'text'}
-            name="password"
-            id="pasId"
-            required={true}
-          />
-          {!showPassword ? (
-            <FiEyeOff
-              style={{ position: 'absolute', top: 18, right: 10 }}
-              onClick={handleChange}
-            />
-          ) : (
-            <FiEye
-              style={{ position: 'absolute', top: 18, right: 10 }}
-              onClick={handleChange}
-            />
-          )}
-        </div>
-        <Btn type="submit">Register</Btn>
-      </div>
-    </Form>
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+            position="relative"
+          >
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="given-name"
+                  name="name"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type={!showPassword ? 'password' : 'text'}
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              {!showPassword ? (
+                <FiEyeOff
+                  style={{
+                    position: 'absolute',
+                    bottom: 95,
+                    right: 15,
+                  }}
+                  onClick={handleChange}
+                />
+              ) : (
+                <FiEye
+                  style={{ position: 'absolute', bottom: 95, right: 15 }}
+                  onClick={handleChange}
+                />
+              )}
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+    </ThemeProvider>
   );
 };
