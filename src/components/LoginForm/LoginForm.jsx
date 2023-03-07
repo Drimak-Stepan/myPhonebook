@@ -2,8 +2,9 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { login } from '../../redux/auth/authOperations';
-
+import useAuth from '../../hooks/useAuth';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import toast from 'react-hot-toast';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -35,6 +36,7 @@ const theme = createTheme();
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { isError } = useAuth();
 
   const dispatch = useDispatch();
 
@@ -47,6 +49,7 @@ export const LoginForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     const form = e.currentTarget;
     dispatch(
       login({
@@ -54,6 +57,11 @@ export const LoginForm = () => {
         password: form.elements.password.value,
       })
     );
+    if (isError.status === 400) {
+      return toast(`User not fount, please enter other data ...`, {
+        style: { color: '#1976d2' },
+      });
+    }
     form.reset();
   };
 

@@ -44,11 +44,11 @@ export const RegisterForm = () => {
       <div>
         <Label htmlFor="nameId">Username</Label>
         <div>
-          <Input type="text" name="name" id="nameId" />
+          <Input type="text" name="name" id="nameId" required={true} />
         </div>
         <Label htmlFor="emailId">Email</Label>
         <div>
-          <Input type="email" name="email" id="emailId" />
+          <Input type="email" name="email" id="emailId" required={true} />
         </div>
         <Label htmlFor="pasId">Password</Label>
         <div style={{ position: 'relative' }}>
@@ -56,6 +56,7 @@ export const RegisterForm = () => {
             type={!showPassword ? 'password' : 'text'}
             name="password"
             id="pasId"
+            required={true}
           />
           {!showPassword ? (
             <FiEyeOff

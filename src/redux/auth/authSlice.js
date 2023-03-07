@@ -16,32 +16,27 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(signup.pending, store => {
-        store.isRefreshing = true;
         store.error = null;
       })
       .addCase(signup.fulfilled, (store, { payload }) => {
-        store.isRefreshing = false;
         store.user = payload.user;
         store.token = payload.token;
         store.isLogin = true;
       })
       .addCase(signup.rejected, (store, { payload }) => {
-        store.isRefreshing = false;
         store.error = payload;
       })
       .addCase(login.pending, store => {
-        store.isRefreshing = true;
         store.error = null;
       })
       .addCase(login.fulfilled, (store, { payload }) => {
-        store.isRefreshing = false;
         store.user = payload.user;
         store.token = payload.token;
         store.isLogin = true;
       })
       .addCase(login.rejected, (store, { payload }) => {
-        store.isRefreshing = false;
         store.error = payload;
+        store.isLogin = false;
       })
       .addCase(logout.pending, store => {
         store.isRefreshing = true;
@@ -63,8 +58,7 @@ const authSlice = createSlice({
       })
       .addCase(current.fulfilled, (store, { payload }) => {
         store.isRefreshing = false;
-        store.user = payload.user;
-        store.token = payload.token;
+        store.user = payload;
         store.isLogin = true;
       })
       .addCase(current.rejected, (store, { payload }) => {

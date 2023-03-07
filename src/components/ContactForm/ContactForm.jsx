@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/contactsOperations';
 import {
   getFilteredContacts,
-  isLoadingAdd,
+  isLoading,
 } from 'redux/contacts/contactsSelectors';
+
 import { Form, Label, Input, Btn } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
 import AddLoader from '../Loader/AddLoader';
@@ -15,7 +16,7 @@ const ContactForm = () => {
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const isAdd = useSelector(isLoadingAdd);
+  const isAdd = useSelector(isLoading);
   const list = useSelector(getFilteredContacts);
 
   const handelChangeNumber = e => {

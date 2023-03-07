@@ -16,16 +16,14 @@ import filterReducer from './filter/filterSlice';
 import authReducer from './auth/authSlice';
 
 const persistConfig = {
-  key: 'token',
+  key: 'auth',
   storage,
   whitelist: ['token'],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
-
 export const store = configureStore({
   reducer: {
-    auth: persistedReducer,
+    auth: persistReducer(persistConfig, authReducer),
     contacts: contactsReducer,
     filter: filterReducer,
   },
