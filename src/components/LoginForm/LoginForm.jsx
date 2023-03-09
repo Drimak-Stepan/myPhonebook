@@ -60,7 +60,7 @@ export const LoginForm = () => {
     );
 
     if (status.error && password && email) {
-      return toast(`Please enter other data for enter`, {
+      return toast(`Please, enter other data for enter`, {
         style: { color: '#1976d2' },
       });
     }

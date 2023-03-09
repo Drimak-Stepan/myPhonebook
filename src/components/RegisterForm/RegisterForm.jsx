@@ -57,7 +57,7 @@ export const RegisterForm = () => {
     );
 
     if (status.error && name && password && email) {
-      return toast(`Please enter other data for registration`, {
+      return toast(`Please, enter other data for registration`, {
         style: { color: '#1976d2' },
       });
     }
