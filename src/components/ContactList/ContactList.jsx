@@ -12,11 +12,12 @@ const ContactList = () => {
 
   const idBtn = useSelector(events);
   const dispatch = useDispatch();
-  const onDeleteContact = id =>
-    dispatch(
-      deleteContact(id),
-      toast('Contact deleted', { style: { color: '#e84a5f' } })
-    );
+  const onDeleteContact = async id => {
+    const status = await dispatch(deleteContact(id));
+    if (status.meta.requestStatus === 'fulfilled') {
+      toast('Contact deleted', { style: { color: '#e84a5f' } });
+    }
+  };
 
   return list.length >= 1 ? (
     <Stats>
