@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 export const Layout = () => {
   return (
     <div
-      style={{ maxWidth: 960, margin: '0 auto', padding: '75px 15px 0 15px' }}
+      style={{ maxWidth: 960, margin: '0 auto', padding: '72px 16px 0 16px' }}
     >
       <AppBar />
       <Suspense fallback={null}>

@@ -7,12 +7,12 @@ export default function Home() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Grid container component="main" sx={{ height: '100vh' }}>
+        <Grid container component="main" sx={{ height: '80vh' }}>
           <CssBaseline />
           <Grid
             item
             xs={false}
-            sm={4}
+            sm={15}
             md={15}
             sx={{
               backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -23,7 +23,7 @@ export default function Home() {
                   : t.palette.grey[900],
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              borderRadius: 24,
+              borderRadius: 8,
               marginBottom: 5,
             }}
           >

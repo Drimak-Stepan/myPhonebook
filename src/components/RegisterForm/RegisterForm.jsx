@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { signup } from '../../redux/auth/authOperations';
-import useAuth from '../../hooks/useAuth';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
@@ -34,8 +33,10 @@ function Copyright() {
 const theme = createTheme();
 
 export const RegisterForm = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const { isError } = useAuth();
   const dispatch = useDispatch();
 
   const handleChange = () => {
@@ -45,27 +46,29 @@ export const RegisterForm = () => {
     setShowPassword(true);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    const form = e.currentTarget;
-    dispatch(
+    const status = await dispatch(
       signup({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        name,
+        email,
+        password,
       })
     );
 
-    if (isError.status === 400) {
-      return toast(
-        `Such a user already exists, please enter other data for registration`,
-        { style: { color: '#1976d2' } }
-      );
+    if (status.error && name && password && email) {
+      return toast(`Please enter other data for registration`, {
+        style: { color: '#1976d2' },
+      });
     }
 
-    form.reset();
+    if (status.meta.requestStatus === 'fulfilled') {
+      toast(`Registration success`, { style: { color: 'green' } });
+      setEmail('');
+      setName('');
+      setPassword('');
+    }
   };
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -94,6 +97,8 @@ export const RegisterForm = () => {
                 <TextField
                   autoComplete="given-name"
                   name="name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
                   required
                   fullWidth
                   id="name"
@@ -103,11 +108,13 @@ export const RegisterForm = () => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  name="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                   required
                   fullWidth
                   id="email"
                   label="Email Address"
-                  name="email"
                   autoComplete="email"
                 />
               </Grid>
@@ -116,6 +123,8 @@ export const RegisterForm = () => {
                   required
                   fullWidth
                   name="password"
+                  onChange={e => setPassword(e.target.value)}
+                  value={password}
                   label="Password"
                   type={!showPassword ? 'password' : 'text'}
                   id="password"

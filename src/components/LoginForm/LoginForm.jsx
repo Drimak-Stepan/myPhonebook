@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { login } from '../../redux/auth/authOperations';
-import useAuth from '../../hooks/useAuth';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
@@ -36,7 +35,6 @@ const theme = createTheme();
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { isError } = useAuth();
 
   const dispatch = useDispatch();
 
@@ -47,23 +45,30 @@ export const LoginForm = () => {
     setShowPassword(true);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const form = e.currentTarget;
-    dispatch(
+    const email = form.elements.email.value;
+    const password = form.elements.password.value;
+
+    const status = await dispatch(
       login({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        email,
+        password,
       })
     );
 
-    if (isError.status === 400) {
-      return toast(`User not fount, please enter other data ...`, {
+    if (status.error && password && email) {
+      return toast(`Please enter other data for enter`, {
         style: { color: '#1976d2' },
       });
     }
-    form.reset();
+    if (status.meta.requestStatus === 'fulfilled') {
+      toast(`Enter success`, { style: { color: 'green' } });
+
+      form.reset();
+    }
   };
 
   return (

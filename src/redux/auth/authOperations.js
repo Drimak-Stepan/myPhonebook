@@ -69,5 +69,13 @@ export const current = createAsyncThunk(
       };
       return rejectWithValue(error);
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { auth } = getState();
+      if (!auth.token) {
+        return false;
+      }
+    },
   }
 );
