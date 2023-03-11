@@ -60,7 +60,7 @@ export const LoginForm = () => {
     );
 
     if (status.error && password && email) {
-      return toast(`Please, enter other data for enter`, {
+      return toast(`Please, enter other data for login`, {
         style: { color: '#1976d2' },
       });
     }
@@ -73,7 +73,7 @@ export const LoginForm = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: '90vh' }}>
         <CssBaseline />
         <Grid
           item
@@ -89,8 +89,8 @@ export const LoginForm = () => {
                 : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            borderTopLeftRadius: 24,
-            borderBottomLeftRadius: 24,
+            borderTopLeftRadius: 16,
+            borderBottomLeftRadius: 16,
             marginBottom: 5,
           }}
         />
@@ -99,8 +99,8 @@ export const LoginForm = () => {
           xs={12}
           sx={{
             marginBottom: 5,
-            borderTopRightRadius: 24,
-            borderBottomRightRadius: 24,
+            borderTopRightRadius: 16,
+            borderBottomRightRadius: 16,
           }}
           sm={8}
           md={5}
