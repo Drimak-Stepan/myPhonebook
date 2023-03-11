@@ -1,8 +1,8 @@
 {
-  "name": "react-hw-08-phonebook",
+  "name": "myPhonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Drimak-Stepan.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://Drimak-Stepan.github.io/myPhonebook/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
